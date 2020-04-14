@@ -59,9 +59,9 @@ class MainWindow(QWidget):
 ________________________________________________________________________________________________________________________________________
 
 ```python
-    def __init__(self):
-        QWidget.__init__(self)
-        self.setWindowTitle("Window Title Here")
+def __init__(self):
+    QWidget.__init__(self)
+    self.setWindowTitle("Window Title Here")
 ```
 
 In the __init__ function, we first initialize the QWidget parent class we inherited. Then we can initialize our main window how we like. For now we'll just set its title to "Window Title Here".
