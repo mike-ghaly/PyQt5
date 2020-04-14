@@ -81,19 +81,26 @@ main_window = MainWindow()
 main_window.show()
 ```
 
-__main_window__ is now an instance of the MainWindow class we created. We then show the main window. 
+__main_window__ is now an instance of the MainWindow class we created. We then show the main window.
+- The __show()__ method can be called on any widget. It displays the widget on the screen. 
+- A widget is first created in memory and later shown on the screen.
 
 ________________________________________________________________________________________________________________________________________
 
 ```python
 sys.exit(app.exec_())
 ```
-This line will make __app__ wait for the **exit** event (When the X is clicked to close the window) and then close the __main_window__.
-If we hadn't included this line, the window would've been displayed for a moment and then got closed.
+Finally, we enter the mainloop of the application. The event handling starts from this point. 
+This line will make __app__ wait for the **exit** event (When the X is clicked to close the window) which will end the mainloop and close the __main_window__.
 ________________________________________________________________________________________________________________________________________
 
+# Challenge 1
 
-
+Make a GUI that has:
+- Application object called "application" and two different windows: "home_window" and "misc_window".
+- The title of the "home_window" is "Home".
+- The title of the "home_window" is "Miscellaneous".
+- When the program runs, only the "home_window" is displayed.
 
 
 
