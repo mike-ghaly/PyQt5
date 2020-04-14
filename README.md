@@ -55,7 +55,7 @@ class MainWindow(QWidget):
 ```
 
 - Here we create our main window *(widgets not embedded in a parent widget are windows)* of type widget *(by inheriting QWidget)*. 
-- It's a class that we can setup however we like and then simply create and instance of it be our actual main window that will contains any widgets we want.
+- It's a class that we can setup however we like and then simply create an instance of it be our actual main window that will contains any widgets we want.
 ________________________________________________________________________________________________________________________________________
 
 ```python
@@ -64,7 +64,7 @@ def __init__(self):
     self.setWindowTitle("Window Title Here")
 ```
 
-In the __init__ function, we first initialize the QWidget parent class we inherited. Then we can initialize our main window how we like. For now we'll just set its title to "Window Title Here".
+In the __init__ function, we first initialize the QWidget parent object we inherited. Then we can initialize our main window how we like. For now we'll just set its title to "Window Title Here".
 
 ________________________________________________________________________________________________________________________________________
 
@@ -89,7 +89,7 @@ ________________________________________________________________________________
 sys.exit(app.exec_())
 ```
 This line will make __app__ wait for the **exit** event (When the X is clicked to close the window) and then close the __main_window__.
-
+If we hadn't included this line, the window would've been displayed for a moment and then got closed.
 ________________________________________________________________________________________________________________________________________
 
 
