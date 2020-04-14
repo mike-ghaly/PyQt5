@@ -22,6 +22,6 @@ sys.exit(app.exec_())
 
 ```
 The above code example shows a small window on the screen when run.
-![Blank Window](https://github.com/Michael-M-Mike/PyQt5/blank-window.png)
+![Blank Window](https://github.com/Michael-M-Mike/PyQt5/blank-window.PNG)
 
 
