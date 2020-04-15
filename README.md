@@ -24,7 +24,7 @@ sys.exit(app.exec_())
 
 The above code example shows a small window on the screen when run.
 
-![Blank Window](https://github.com/Michael-M-Mike/PyQt5/blob/master/blank-window.PNG)
+![Blank Window](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/blank-window.PNG)
 
 # Stepping Through The Code
 
@@ -46,7 +46,7 @@ Here we provide the necessary imports.
 - Every widget is rectangular. 
 - A widget that is not embedded in a parent widget is called a window. Usually, windows have a frame and a title bar
 
-![Widgets](https://github.com/Michael-M-Mike/PyQt5/blob/master/widgets.PNG)
+![Widgets](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/widgets.PNG)
 
 ________________________________________________________________________________________________________________________________________
 
