@@ -23,3 +23,22 @@ Instead what we want is for our widgets to automatically change size to have the
 ![layouts5](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/layouts5.PNG)
 ![layouts6](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/layouts6.PNG)
 
+This is done by using **layouts**.
+
+There are 4 types of layouts:
+
+# Vertical Layout
+
+![layoutsv](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/layouts-v.PNG)
+
+# Horizontal Layout
+
+![layoutsh](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/layouts-h.PNG)
+
+# Form Layout
+
+![layoutsf](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/layouts-f.PNG)
+
+# Grid Layout
+
+No need to show it. Our next project will be one big grid :)
