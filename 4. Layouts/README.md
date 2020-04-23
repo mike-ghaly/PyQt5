@@ -21,7 +21,7 @@ As we've already seen, this may have a few issues:
 - Applications might look different on various screens/platforms
 - Making small changes to our design (like changing labels' font) may mess up the entire design
 
-Instead what we want is for our widgets to automatically change size to have the look we want regardless of the window's size or platform.
+Instead what we want is for our widgets to automatically change size and to have the look we want regardless of the window's size or platform.
 
 ![layouts4](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/layouts4.PNG)
 ![layouts5](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/layouts5.PNG)
