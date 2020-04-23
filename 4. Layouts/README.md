@@ -14,7 +14,7 @@ Same thing will happen if we make the window smaller.
 
 ![layouts3](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/layouts3.PNG)
 
-This is because so far we've been using **absolute positiong**, which means that we specified the position and the size of each widget and no matter how much the window is resized, our widgets will always be at the same position and have the same size.
+This is because so far we've been using **absolute positioning**, which means that we specified the position and the size of each widget and no matter how much the window is resized, our widgets will always be at the same position and have the same size.
 
 As we've already seen, this may have a few issues:
 - The size and the position of a widget do not change if we resize a window
