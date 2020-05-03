@@ -123,9 +123,7 @@ Now when *Check Survivors* is pressed, we need to:
 But what if the user enterd an unexpected input?
 
 We expect age to be "Adult" or "Child". 
-
 But the user doesn't know that. 
-
 They could enter 22 or 19 or "kid" or "banana" or 587.415 or *#&@#$% or [1, "dsa, @#$%, []] or {}{}}}{{{.
 
 Moral of the story: The user will enter something we aren't expecting. And as you've seen already, any unexpected input or any runtime error will cause the GUI to crash.
@@ -133,7 +131,210 @@ Moral of the story: The user will enter something we aren't expecting. And as yo
 The solution is to never trust user input and whenever we get an input from the user, we must validate it and make sure it's an input that we're ok with.
 
 Here are the revised steps:
-1. Get the data from the table (Each row is a Person object)
---> 1.1. Validate the data and don't go to step 2 unless the inputs are valid.
-2. Call the *survived* function to know whether the person survived or not.
-3. Fill the last column of the table with the return of that function.
+- Get the data from the table (Each row is a Person object)
+  - Validate the data and don't go to the next step unless the inputs are valid.
+  - If any input is invalid, popup an error message telling the user what went wrong.
+- Call the *survived* function to know whether the person survived or not.
+- Fill the last column of the table with the return of that function.
+
+## Popup Error Message
+
+From now on, any GUI class we create should have this popup function. It "pops* an error message with the given title and text.
+
+![](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/sch9.PNG)
+
+```python
+
+# Show Error Message Popup
+def popup(self, title, text):
+
+    msg = QMessageBox()
+    msg.setWindowTitle(title)
+    msg.setWindowIcon(QtGui.QIcon("icon.ico"))
+    msg.setText(text)
+    msg.setIcon(QMessageBox.Warning)
+
+    show_msg = msg.exec_()
+
+```
+
+Notes:
+- Make sure that you import QMessageBox from PyQt5.QtWidgets 
+- "icon.ico" is the name of the icon file that you chose for your main window.
+
+
+## Check Survivors 
+
+```python
+
+def check_survivors(self):
+
+    # Check if at least 1 person is provided
+    if self.rows == 0:
+        self.popup("People Data", "Please Provide at least one Person.")
+        return
+
+    # Check that all table cells are provided and check that they're valid
+    for row in range(self.tableWidget.rowCount()):
+        for col in range(4):
+
+            cell_text = self.tableWidget.item(row, col).text()
+
+            # Empty Table Cell
+            if cell_text == "":
+                self.popup("People Data", "Please Fill All Table Cells.")
+                return
+
+            # Class Column
+            elif col == 1 and cell_text.lower() != "high" and cell_text.lower() != "low":
+                self.popup("People Data", "Class: 'high' or 'low' only.")
+                return
+
+            # Sex Column
+            elif col == 2 and cell_text.lower() != "male" and cell_text.lower() != "female":
+                self.popup("People Data", "Sex: 'male' or 'female' only.")
+                return
+
+            # Age Column
+            elif col == 3 and cell_text.lower() != "adult" and cell_text.lower() != "child":
+                self.popup("People Data", "Age: 'adult' or 'child' only.")
+                return
+
+    # Get Data from Table and Fill the output column
+    for row in range(self.tableWidget.rowCount()):
+            name = self.tableWidget.item(row, 0).text()
+            tclass = self.tableWidget.item(row, 1).text()
+            sex = self.tableWidget.item(row, 2).text()
+            age = self.tableWidget.item(row, 3).text()
+            person = Person(name, tclass, sex, age)
+
+            if survived(person):
+                self.tableWidget.item(row, 4).setText("Survived")
+            else:
+                self.tableWidget.item(row, 4).setText("Died")
+
+```
+
+**NOTE**: 
+
+After poping an error message, you have to *return* as you can see in the code. If there's a problem with user input, we don't want to continue with the code. We want to stop and return and wait for the user to fix his mess.
+______________________________________________________________________________________________________________________________
+
+# Dark Theme
+
+1. import os
+2. Copy paste the driver code
+
+```python
+
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+
+    app.setStyle("fusion")
+
+    stylesheet = resource_path("dark.css")
+    with open(stylesheet, "r") as fh:
+        app.setStyleSheet(fh.read())
+
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+
+```
+
+Notes:
+
+- *dark.css* is a file that you have to include in the project directory. You can find it in the repo.
+- This stylesheets should be used with smaller projects only. For larger project use your own stylesheet so you can be able to manage and customize it.
+
+______________________________________________________________________________________________________________________________
+
+# Challenge 1
+
+Finish this project. You should have 2 files:
+
+- model.py
+- view.py
+
+When you finish the project, start testing it. You'll figure that there're cases where the output will NOT be correct and will NOT follow the blue table. Figure out why and fix it!
+
+*Hint*: Jack Dawson did in fact die on the titanic... in some cases the GUI will say he survived. When and why does that happen?
+
+______________________________________________________________________________________________________________________________
+
+# Challenge 2
+
+Re-create the CPU Scheduler Project. Using the MV structure.
+
+- Design it YOURSELF using the Qt Designer (you can find some hints if you go to the img directory in the repo and look at sch1 through sch8)
+- You can copy the model.py code, you don't have to write that from scratch.
+- You can also copy all the GUI methods **EXCEPT** the *simulate_clicked* method (Don't even look at it).
+
+```python
+
+def simulate_clicked(self):
+
+  # Check if at least 1 process is provided
+  
+  # Check that all mandatory table cells are provided
+  
+  # Check that all the data are valid
+  
+  # If all is good, Get data from Table
+  # Every row is a process object
+  # Create a list called processes_list and append to it all the processes objects
+  color = self.comboBox[row].currentText() -> to get the color as text
+  self.processes_list.append(Process(pid, color, arrival, burst, priority)) -> to append a process object
+  
+  # If priority isn't given, assume it's equal 1 (If the desired algorithm is priority... then it must be given)
+  
+  # Get the desired algorithm (If no algorithm is selected -> popup an error)
+  selected_algorithm = self.algorithm_dropdown.currentText()
+  
+  # Populate one list with pids and another with corresponding burst times
+  self.pids = []
+  self.burst_times = []
+  for process in self.processes_list:
+      self.pids.append(process.pid)
+      self.burst_times.append(process.burst_time)
+
+  # First Come, First Served
+  if selected_algorithm == "First Come, First Served":
+      self.chart = CPU_SCHEDULER.first_come_first_served(self.processes_list)
+
+  # Shortest Job First (Non)
+  elif selected_algorithm == "Shortest Job First                     (Non Preemptive)":
+      self.chart = CPU_SCHEDULER.shortest_job_first(self.processes_list, preemptive=0)
+
+  # Shortest Job First (Pre)
+  elif selected_algorithm == "Shortest Job First                     (Preemptive)":
+      self.chart = CPU_SCHEDULER.shortest_job_first(self.processes_list, preemptive=1)
+      
+  # Priority (Non)
+  Implement it yourself
+  
+  # Priority (Pre)
+  Implement it yourself
+  
+  # Round Robin
+  Implement it yourself
+
+  self.display_stats()
+    self.draw_chart()
+
+```
