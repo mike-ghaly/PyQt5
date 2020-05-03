@@ -36,3 +36,33 @@ The decision is based on this table:
 
 ![](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/t1.PNG)
 
+________________________________________________________________________________________________________________________________
+
+# 1. Design
+
+Drag a title label, a table widget, some pushbuttons as shown:
+
+![](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/t3.PNG)
+
+Put the 2 pushbuttons above the table in a horizontal layout:
+
+![](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/t4.PNG)
+
+Select all and lay them out vertically (Also right click the title label and in *layout alignment* pick *center horizontally*):
+
+![](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/t5.PNG)
+
+Insert a **Vertical Spacer** below the title and select its sizePolicy to be fixed. **Spacers** are a way to have some whitespace between widgets in a layout.
+
+![](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/t6.PNG)
+
+Don't worry about colours or stylesheets, we'll use a pre-made stylesheet to have the dark theme shown above. However you can pick the font and the font size you prefer. 
+
+Also double click the table widget and add rows and columns so it looks like the image above as well.
+
+![](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/t7.PNG)
+
+We don't want to worry about resizing the project window so we'll give it a **fixed** width and height.
+
+![](https://github.com/Michael-M-Mike/PyQt5/blob/master/img/t8.PNG)
+
